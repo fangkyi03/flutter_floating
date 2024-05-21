@@ -43,10 +43,12 @@ class FloatingManager {
   }
 
   ///关闭 [key] 对应的 [Floating]
-  closeFloating(Object key) {
-    var floating = _floatingCache[key];
-    floating?.close();
-    _floatingCache.remove(key);
+  closeFloating(String key) {
+    if (_floatingCache.containsKey(key)) {
+      var floating = _floatingCache[key];
+      floating?.close();
+      _floatingCache.remove(key);
+    }
   }
 
   ///关闭所有的 [Floating]
